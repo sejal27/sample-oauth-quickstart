@@ -16,7 +16,7 @@
         "dest": "/index.js"
       },
       {
-        "src": "/about",
+        "src": "/quotes",
         "dest": "/index.js"
       }
     ]
