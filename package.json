@@ -1,0 +1,14 @@
+{
+  "name": "sample-oauth-quickstart",
+  "version": "1.0.0",
+  "description": "sample quickstart app for hubspot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http": "^0.0.1-security"
+  }
+}
