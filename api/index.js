@@ -5,7 +5,7 @@ const NodeCache = require("node-cache");
 const session = require("express-session");
 // const opn = require("open");
 const app = express();
-app.use('/images', express.static('public/images'));
+// app.use('/images', express.static('public/images'));
 
 const PORT = 3000;
 

@@ -1,0 +1,32 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "index.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "public/**",
+        "use": "@vercel/static"
+    }
+    ],
+    "routes": [
+      {
+        "src": "/",
+        "dest": "/index.js"
+      },
+      {
+        "src": "/oauth-callback",
+        "dest": "/index.js"
+      },
+      {
+        "src": "/quotes",
+        "dest": "/index.js"
+      },
+      {
+        "src": "/images/**",
+        "dest": "public/images/**"
+      }
+    ]
+  }
+  
