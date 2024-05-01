@@ -225,11 +225,13 @@ app.get("/", async (req, res) => {
   res.setHeader("Content-Type", "text/html");
   res.write(`<style>
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f0f0f0; }
+    .content { text-align: center; }
     h2 { color: #333; }
     p { color: #666; }
-    img { max-width: 50%; }
+    img { max-width: 100%; }
     .install-btn { background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; }
   </style>`);
+  res.write(`<div class="content">`);
   res.write(`<h2>Get some Zen in your life with this ZenQuotes App</h2>`);
   res.write(`<p>After you install this app, goto contact record page, click Customize this tab, and find ZenQuote Cats card. Have fun!</p>`);
   res.write(`<img src="/images/zenquotes-cats.png" alt="zenquote-cats">`);
@@ -241,6 +243,7 @@ app.get("/", async (req, res) => {
   } else {
     res.write(`<form action="/install" method="get"><button class="install-btn">Install the app</button></form>`);
   }
+  res.write(`</div>`);
   res.end();
 });
 
