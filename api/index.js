@@ -254,7 +254,7 @@ app.get("/", async (req, res) => {
   res.write(`<div class="content">`);
   res.write(`<h2>Get some Zen in your life with this ZenQuotes App</h2>`);
   res.write(
-    `<p>After you install this app, <ol><li>Goto contact record page.</li><li>click <b>Customize this tab in the middle column</b></li>find 'ZenQuote Cats' card in <b>Extensions</b> category.<li></ol> Have fun!</p>`
+    `<p>After you install this app, open contact record page, click <b>Customize this tab</b> in the middle column, and find 'ZenQuote Cats' card in <b>Extensions</b> category. Have fun!</p>`
   );
   res.write(`<img src="/images/card.png" alt="zenquote-cats">`);
   if (isAuthorized(req.sessionID)) {
