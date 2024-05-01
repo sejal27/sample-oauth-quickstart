@@ -263,7 +263,7 @@ app.get("/", async (req, res) => {
     res.write(`<h4>Access token: ${accessToken}</h4>`);
     displayContactName(res, contact);
   } else {
-    res.write(`<a href="/install" class="install-btn">Install the app</a>`);
+    res.write(`<br><a href="/install" class="install-btn">Install the app</a>`);
   }
   res.write(`</div>`);
   res.end();
