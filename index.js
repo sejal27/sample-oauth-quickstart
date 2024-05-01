@@ -220,9 +220,14 @@ const displayContactName = (res, contact) => {
   res.write(`<p>Contact name: ${firstname.value} ${lastname.value}</p>`);
 };
 
+app.use('/images', express.static('images'));
+
 app.get("/", async (req, res) => {
   res.setHeader("Content-Type", "text/html");
-  res.write(`<h2>HubSpot OAuth 2.0 Quickstart App</h2>`);
+  // res.write(`<h2>HubSpot OAuth 2.0 Quickstart App</h2>`);
+  res.write(`<h2>Get some Zen in your life with this ZenQuotes App</h2>`);
+  res.write(`<p>After you install this app, goto contact record page, click Customize this tab, and find ZenQuote Cats card. Have fun 🐱!</p>`);
+  res.write(`<img src="/images/zenquotes-cats.png" alt="zenquote-cats">`);
   if (isAuthorized(req.sessionID)) {
     const accessToken = await getAccessToken(req.sessionID);
     const contact = await getContact(accessToken);
