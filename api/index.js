@@ -37,7 +37,7 @@ if (process.env.SCOPE) {
 }
 
 // On successful install, users will be redirected to /oauth-callback
-const REDIRECT_URI = `https://zenquotes-with-hubspot.vercel.app//oauth-callback`;
+const REDIRECT_URI = `https://zenquotes-with-hubspot.vercel.app/oauth-callback`;
 
 //===========================================================================//
 
