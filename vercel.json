@@ -15,6 +15,10 @@
         {
             "source": "/oauth-callback",
             "destination": "/api/index.js"
-        }
+        },
+        {
+          "source": "/install",
+          "destination": "/api/index.js"
+      }
     ]
   }
