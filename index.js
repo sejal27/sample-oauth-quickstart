@@ -5,6 +5,7 @@ const NodeCache = require("node-cache");
 const session = require("express-session");
 // const opn = require("open");
 const app = express();
+app.use('/images', express.static('public/images'));
 
 const PORT = 3000;
 
@@ -219,8 +220,6 @@ const displayContactName = (res, contact) => {
   const { firstname, lastname } = contact.properties;
   res.write(`<p>Contact name: ${firstname.value} ${lastname.value}</p>`);
 };
-
-// app.use(express.static('public'));
 
 app.get("/", async (req, res) => {
   res.setHeader("Content-Type", "text/html");
