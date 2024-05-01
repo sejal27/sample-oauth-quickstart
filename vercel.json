@@ -19,6 +19,10 @@
         {
           "source": "/install",
           "destination": "/api/index.js"
-      }
+      },
+      {
+        "source": "/quotes",
+        "destination": "/api/index.js"
+    }
     ]
   }
