@@ -237,7 +237,7 @@ app.get("/", async (req, res) => {
     .content { text-align: center; }
     h2 { color: #333; }
     p { color: #666; }
-    img { max-width: 50%; }
+    img { max-width: 70%; }
     .install-btn { 
       background-color: #4CAF50; 
       border: none; 
