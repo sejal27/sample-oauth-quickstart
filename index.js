@@ -220,7 +220,7 @@ const displayContactName = (res, contact) => {
   res.write(`<p>Contact name: ${firstname.value} ${lastname.value}</p>`);
 };
 
-app.use('/images', express.static('images'));
+app.use(express.static('public'));
 
 app.get("/", async (req, res) => {
   res.setHeader("Content-Type", "text/html");
