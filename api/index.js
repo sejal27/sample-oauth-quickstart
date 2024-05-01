@@ -256,7 +256,7 @@ app.get("/", async (req, res) => {
   res.write(
     `<p>After you install this app, goto contact record page, click Customize this tab, and find ZenQuote Cats card. Have fun!</p>`
   );
-  res.write(`<img src="/images/zenquotes-cats.png" alt="zenquote-cats">`);
+  res.write(`<img src="/images/card.png" alt="zenquote-cats">`);
   if (isAuthorized(req.sessionID)) {
     const accessToken = await getAccessToken(req.sessionID);
     const contact = await getContact(accessToken);
