@@ -12,7 +12,7 @@
         "dest": "/index.js"
       },
       {
-        "src": "/about",
+        "src": "/oauth-callback",
         "dest": "/index.js"
       }
     ]
