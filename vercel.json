@@ -14,6 +14,10 @@
       {
         "src": "/oauth-callback",
         "dest": "/index.js"
+      },
+      {
+        "src": "/about",
+        "dest": "/index.js"
       }
     ]
   }
