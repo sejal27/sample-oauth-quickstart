@@ -225,9 +225,9 @@ app.get("/", async (req, res) => {
   res.setHeader("Content-Type", "text/html");
   res.write(`<style>
     body { 
-      font-family: Arial, sans-serif; 
-      margin: 0; 
-      padding: 0; 
+      font-family: 'Lexend Deca', sans-serif; 
+      margin: 10px 10px; 
+      padding: 4px 4px; 
       background-color: #f0f0f0; 
       display: flex; 
       justify-content: center; 
@@ -237,7 +237,7 @@ app.get("/", async (req, res) => {
     .content { text-align: center; }
     h2 { color: #333; }
     p { color: #666; }
-    img { max-width: 70%; }
+    img { max-width: 70%; border: 1px solid #000000 }
     .install-btn { 
       background-color: #4CAF50; 
       border: none; 
@@ -254,7 +254,7 @@ app.get("/", async (req, res) => {
   res.write(`<div class="content">`);
   res.write(`<h2>Get some Zen in your life with this ZenQuotes App</h2>`);
   res.write(
-    `<p>After you install this app, goto contact record page, click Customize this tab, and find ZenQuote Cats card. Have fun!</p>`
+    `<p>After you install this app, <ol><li>Goto contact record page.</li><li>click <b>Customize this tab in the middle column</b></li>find 'ZenQuote Cats' card in <b>Extensions</b> category.<li></ol> Have fun!</p>`
   );
   res.write(`<img src="/images/card.png" alt="zenquote-cats">`);
   if (isAuthorized(req.sessionID)) {
