@@ -218,12 +218,18 @@ const displayContactName = (res, contact) => {
     return;
   }
   const { firstname, lastname } = contact.properties;
-  res.write(`<p>Contact name: ${firstname.value} ${lastname.value}</p>`);
+  res.write(`<p>Success! Here's a sample contact in this account. Contact name: ${firstname.value} ${lastname.value}</p>`);
 };
 
 app.get("/", async (req, res) => {
   res.setHeader("Content-Type", "text/html");
-  // res.write(`<h2>HubSpot OAuth 2.0 Quickstart App</h2>`);
+  res.write(`<style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f0f0f0; }
+    h2 { color: #333; }
+    p { color: #666; }
+    img { max-width: 50%; }
+    .install-btn { background-color: #4CAF50; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; }
+  </style>`);
   res.write(`<h2>Get some Zen in your life with this ZenQuotes App</h2>`);
   res.write(`<p>After you install this app, goto contact record page, click Customize this tab, and find ZenQuote Cats card. Have fun!</p>`);
   res.write(`<img src="/images/zenquotes-cats.png" alt="zenquote-cats">`);
@@ -233,7 +239,7 @@ app.get("/", async (req, res) => {
     res.write(`<h4>Access token: ${accessToken}</h4>`);
     displayContactName(res, contact);
   } else {
-    res.write(`<a href="/install"><h3>Install the app</h3></a>`);
+    res.write(`<form action="/install" method="get"><button class="install-btn">Install the app</button></form>`);
   }
   res.end();
 });
