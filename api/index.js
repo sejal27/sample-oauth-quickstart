@@ -253,6 +253,7 @@ app.get("/", async (req, res) => {
     res.write(
       `<h2>Congratulations! You just installed Zenquotes Cats app!</h2>`
     );
+
     displayContactName(res, contact);
     res.write(
       `<p>After you install this app, open contact record page, click <b>Customize this tab</b> in the middle column, and find 'ZenQuote Cats' card in <b>Extensions</b> category. Have fun!</p>`
@@ -263,6 +264,9 @@ app.get("/", async (req, res) => {
     res.write(`<img src="/images/card.png" alt="zenquote-cats">`);
     res.write(
       `<br><br><a href="/install" class="install-btn">Install the app</a>`
+    );
+    res.write(
+      `<p>Note: this is a test app created by Sejal Parikh, it is not actively being maintained.</p>`
     );
   }
   res.write(`</div>`);
