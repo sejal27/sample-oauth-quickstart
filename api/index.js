@@ -257,7 +257,7 @@ app.get("/", async (req, res) => {
     res.write(
       `<p>After you install this app, open contact record page, click <b>Customize this tab</b> in the middle column, and find 'ZenQuote Cats' card in <b>Extensions</b> category. Have fun!</p>`
     );
-    res.write(`<img src="/public/config.gif" alt="config">`);
+    res.write(`<img src="/images/config.gif" alt="config">`);
   } else {
     res.write(`<h2>Get some Zen in your life with this ZenQuotes App</h2>`);
     res.write(`<img src="/images/card.png" alt="zenquote-cats">`);
