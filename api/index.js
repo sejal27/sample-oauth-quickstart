@@ -75,14 +75,55 @@ app.get("/install", (req, res) => {
   console.log("===> Step 2: User is being prompted for consent by HubSpot");
 });
 
-// Step 2
-// The user is prompted to give the app access to the requested
-// resources. This is all done by HubSpot, so no work is necessary
-// on the app's end
+app.get("/post-install", (req, res) => {
+  res.setHeader("Content-Type", "text/html");
+  res.write(`<style>
+    body { 
+      font-family: 'Lexend Deca', sans-serif; 
+      margin: 10px 10px; 
+      padding: 4px 4px; 
+      background-color: #f0f0f0; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      height: 100vh; 
+    }
+    .content { text-align: center; }
+    h2 { color: #333; }
+    p { color: #666; }
+    img { max-width: 70%; border: 1px solid #000000 }
+    .install-btn { 
+      background-color: #4CAF50; 
+      border: none; 
+      color: white; 
+      padding: 15px 32px; 
+      text-align: center; 
+      text-decoration: none; 
+      display: inline-block; 
+      font-size: 16px; 
+      margin: 4px 2px; 
+      cursor: pointer; 
+    }
+  </style>`);
+  res.write(`<div class="content">`);
+  
+  if (isAuthorized(req.sessionID)) {
+    const accessToken = await getAccessToken(req.sessionID);
+    const contact = await getContact(accessToken);
+    // res.write(`<h4>Access token: ${accessToken}</h4>`);
+    displayContactName(res, contact);
+    res.write(
+      `<h2>Congratulations! You successfully installed ZenQuotes Cats app.</h2>`
+    );
+    res.write(
+      `<p>After you install this app, open contact record page, click <b>Customize this tab</b> in the middle column, and find 'ZenQuote Cats' card in <b>Extensions</b> category. Have fun!</p>`
+    );
+  }
 
-// Step 3
-// Receive the authorization code from the OAuth 2.0 Server,
-// and process it based on the query parameters that are passed
+  res.write(`</div>`);
+  res.end();
+});
+
 app.get("/oauth-callback", async (req, res) => {
   console.log("===> Step 3: Handling the request sent by the server");
 
@@ -111,7 +152,7 @@ app.get("/oauth-callback", async (req, res) => {
 
     // Once the tokens have been retrieved, use them to make a query
     // to the HubSpot API
-    res.redirect(`/`);
+    res.redirect(`/post-install`);
   }
 });
 
@@ -255,20 +296,11 @@ app.get("/", async (req, res) => {
   </style>`);
   res.write(`<div class="content">`);
   res.write(`<h2>Get some Zen in your life with this ZenQuotes App</h2>`);
-  res.write(
-    `<p>After you install this app, open contact record page, click <b>Customize this tab</b> in the middle column, and find 'ZenQuote Cats' card in <b>Extensions</b> category. Have fun!</p>`
-  );
   res.write(`<img src="/images/card.png" alt="zenquote-cats">`);
-  if (isAuthorized(req.sessionID)) {
-    const accessToken = await getAccessToken(req.sessionID);
-    const contact = await getContact(accessToken);
-    // res.write(`<h4>Access token: ${accessToken}</h4>`);
-    displayContactName(res, contact);
-  } else {
     res.write(
       `<br><br><a href="/install" class="install-btn">Install the app</a>`
     );
-  }
+  
   res.write(`</div>`);
   res.end();
 });
