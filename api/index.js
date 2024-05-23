@@ -247,18 +247,20 @@ app.get("/", async (req, res) => {
   </style>`);
   res.write(`<div class="content">`);
   if (isAuthorized(req.sessionID)) {
-    res.write(`<h2>Congratulations! You just installed Zenquotes Cats app!</h2>`);
     const accessToken = await getAccessToken(req.sessionID);
     const contact = await getContact(accessToken);
     // res.write(`<h4>Access token: ${accessToken}</h4>`);
+    res.write(
+      `<h2>Congratulations! You just installed Zenquotes Cats app!</h2>`
+    );
     displayContactName(res, contact);
     res.write(
       `<p>After you install this app, open contact record page, click <b>Customize this tab</b> in the middle column, and find 'ZenQuote Cats' card in <b>Extensions</b> category. Have fun!</p>`
     );
   } else {
+    res.write(`<h2>Get some Zen in your life with this ZenQuotes App</h2>`);
+    res.write(`<img src="/images/card.png" alt="zenquote-cats">`);
     res.write(
-      res.write(`<h2>Get some Zen in your life with this ZenQuotes App</h2>`);
-      res.write(`<img src="/images/card.png" alt="zenquote-cats">`);
       `<br><br><a href="/install" class="install-btn">Install the app</a>`
     );
   }
