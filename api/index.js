@@ -218,7 +218,9 @@ const displayContactName = (res, contact) => {
     return;
   }
   const { firstname, lastname } = contact.properties;
-  res.write(`<p>Success! Here's a sample contact in this account. Contact name: ${firstname.value} ${lastname.value}</p>`);
+  res.write(
+    `<p>Success! Here's a sample contact in this account. Contact name: ${firstname.value} ${lastname.value}</p>`
+  );
 };
 
 app.get("/", async (req, res) => {
@@ -260,10 +262,12 @@ app.get("/", async (req, res) => {
   if (isAuthorized(req.sessionID)) {
     const accessToken = await getAccessToken(req.sessionID);
     const contact = await getContact(accessToken);
-    res.write(`<h4>Access token: ${accessToken}</h4>`);
+    // res.write(`<h4>Access token: ${accessToken}</h4>`);
     displayContactName(res, contact);
   } else {
-    res.write(`<br><br><a href="/install" class="install-btn">Install the app</a>`);
+    res.write(
+      `<br><br><a href="/install" class="install-btn">Install the app</a>`
+    );
   }
   res.write(`</div>`);
   res.end();
