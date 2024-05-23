@@ -211,7 +211,7 @@ const displayContactName = (res, contact) => {
   }
   const { firstname, lastname } = contact.properties;
   res.write(
-    `<p>Success! Here's a sample contact in this account. Contact name: ${firstname.value} ${lastname.value}</p>`
+    `<p>Here's a sample contact in this account. Contact name: ${firstname.value} ${lastname.value}</p>`
   );
 };
 
@@ -221,7 +221,7 @@ app.get("/", async (req, res) => {
     body { 
       font-family: 'Lexend Deca', sans-serif; 
       margin: 10px 10px; 
-      padding: 4px 4px; 
+      padding: 10px 10px; 
       background-color: #f0f0f0; 
       display: flex; 
       justify-content: center; 
@@ -257,6 +257,7 @@ app.get("/", async (req, res) => {
     res.write(
       `<p>After you install this app, open contact record page, click <b>Customize this tab</b> in the middle column, and find 'ZenQuote Cats' card in <b>Extensions</b> category. Have fun!</p>`
     );
+    res.write(`<img src="/public/config.gif" alt="config">`);
   } else {
     res.write(`<h2>Get some Zen in your life with this ZenQuotes App</h2>`);
     res.write(`<img src="/images/card.png" alt="zenquote-cats">`);
