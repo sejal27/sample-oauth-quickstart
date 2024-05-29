@@ -3,11 +3,15 @@ const express = require("express");
 const request = require("request-promise-native");
 const NodeCache = require("node-cache");
 const session = require("express-session");
+const path = require("path");
+
 // const opn = require("open");
 const app = express();
 // app.use('/images', express.static('public/images'));
 
-const PORT = 3000;
+app.use(express.static(path.join(__dirname, "..", "public")));
+
+// const PORT = 3000;
 
 const refreshTokenStore = {};
 const accessTokenCache = new NodeCache({ deleteOnExpire: true });
@@ -37,8 +41,14 @@ if (process.env.SCOPE) {
 }
 
 // On successful install, users will be redirected to /oauth-callback
-const REDIRECT_URI = `https://zenquotes-with-hubspot.vercel.app/oauth-callback`;
+// const REDIRECT_URI = `https://zenquotes-with-hubspot.vercel.app/oauth-callback`;
 
+const PORT = process.env.PORT || 4000;
+const REDIRECT_URI = `https://${
+  process.env.VERCEL_URL || `localhost:${PORT}`
+}/oauth-callback`;
+
+// const REDIRECT_URI = `https://${process.env.VERCEL_URL}/oauth-callback`;
 //===========================================================================//
 
 // Use a session to keep track of client ID
@@ -292,7 +302,7 @@ app.get("/quotes", async (req, res) => {
   }
 });
 
-app.listen(PORT, () =>
-  console.log(`=== Starting your app on http://localhost:${PORT} ===`)
-);
-// opn(`http://localhost:${PORT}`);
+module.exports = app;
+console.log(PORT);
+
+app.listen(PORT, () => console.log(`=== Starting your app on localhost ===`));

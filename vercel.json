@@ -1,28 +1,19 @@
 {
-    "rewrites": [
-        {
-          "source": "/api/(.*)",
-          "destination": "/api"
-        },
-        {
-          "source": "/",
-          "destination": "/api/index.js"
-        },
-        {
-            "source": "/",
-            "destination": "/api/index.js"
-        },
-        {
-            "source": "/oauth-callback",
-            "destination": "/api/index.js"
-        },
-        {
-          "source": "/install",
-          "destination": "/api/index.js"
-      },
-      {
-        "source": "/quotes",
-        "destination": "/api/index.js"
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.js",
+      "use": "@vercel/node"
     }
-    ]
-  }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.js"
+    }
+  ]
+}
