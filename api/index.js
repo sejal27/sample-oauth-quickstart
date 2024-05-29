@@ -45,7 +45,7 @@ if (process.env.SCOPE) {
 
 const PORT = process.env.PORT || 4000;
 const REDIRECT_URI = `https://${
-  process.env.VERCEL_URL || `localhost:${PORT}`
+  process.env.DOMAIN || `localhost:${PORT}`
 }/oauth-callback`;
 
 // const REDIRECT_URI = `https://${process.env.VERCEL_URL}/oauth-callback`;
