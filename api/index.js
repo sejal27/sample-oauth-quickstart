@@ -276,7 +276,7 @@ app.get("/", async (req, res) => {
       `<br><br><a href="/install" class="install-btn">Install the app</a>`
     );
     res.write(
-      `<p>Note: this is a test app created by Sejal Parikh, it is not actively being maintained. URL is: ${process.env.VERCEL_URL}</p>`
+      `<p>Note: this is a test app created by Sejal Parikh, it is not actively being maintained.</p>`
     );
   }
   res.write(`</div>`);
